@@ -21,34 +21,31 @@ function loadPosts() {
           `)
         )
 
-        $( ".a1" ).click( function(ev) {
+      }
 
-          
+      $( ".a1" ).click( function(ev) {
 
-          var id = $(this).attr('dataId') ;
-          console.log(id) ;
+        $('#content').load("../components/comments.html") ;  
+        var id = $(this).attr('dataId') ;
           
-          $.get(`/api/posts/comments/${id}`, (comments) => {
-            $('#content').load("../components/comments.html") ;
-            for (let c of comments) {
-                console.log("hey there");
+        $.get(`/api/posts/comments/${id}`, (comments) => {
+          for (let c of comments) {
                 
-                $('#comments-container').append(
-                    $(`
-                    <div class="card" style="width: 90%;">
-                    <div class="card-body">
-                      <h5 class="card-title">${c.title}</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">- ${c.user.username}</h6>
-                      <p class="card-text">${c.body}</p>
-                    </div>
-                    </div>
-                    `)
-                )
-            }
+            $('#comments-container').append(
+                $(`
+                <div class="card" style="width: 90%;">
+                <div class="card-body">
+                  <h5 class="card-title">${c.title}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">- ${c.user.username}</h6>
+                  <p class="card-text">${c.body}</p>
+                </div>
+                </div>
+                `)
+            )
+          }
         })
 
         });
 
-      }
     })
   }

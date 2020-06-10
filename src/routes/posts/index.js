@@ -6,6 +6,12 @@ const {
 
 const route = Router()
 
+route.get('/:id', async (req, res) => {
+  
+  const posts = await findAllPosts(req.params.id) ;
+  res.status(200).send(posts)
+})
+
 route.get('/', async (req, res) => {
     const posts = await findAllPosts()
     res.status(200).send(posts)

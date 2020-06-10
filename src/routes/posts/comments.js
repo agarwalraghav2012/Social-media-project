@@ -10,10 +10,10 @@ commentsRoute.get('/:id', async (req,res) => {
   res.status(200).send(comments)
 })
 // Temprary ---------------------------------------------------------------
-commentsRoute.get('/', async (req,res) => {
-  const comments = await findAllComments(20) ;
-  res.status(200).send(comments)
-})
+// commentsRoute.get('/', async (req,res) => {
+//   const comments = await findAllComments(20) ;
+//   res.status(200).send(comments)
+// })
 
 commentsRoute.post('/', async (req, res) => {
   const { userId, title, body, postId } = req.body
