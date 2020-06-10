@@ -19,7 +19,8 @@ const COL_USERNAME_DEF = {
 }
 const COL_TITLE_DEF = {
     type: Sequelize.DataTypes.STRING(140),
-    allowNull: false
+    allowNull: false,
+    unique: true
 }
 
 const Posts = db.define('post', {

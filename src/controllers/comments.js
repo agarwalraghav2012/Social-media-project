@@ -1,4 +1,4 @@
-const { Posts, Comments, Users } = require('../db/models')
+const { Posts, Comments, Users } = require('../db/models') ;
 
 async function createNewComment(userId, title, body, postId) {
     const comment = await Comments.create({
@@ -11,11 +11,14 @@ async function createNewComment(userId, title, body, postId) {
     return comment
   }
   
-async function findAllComments(query) {
+async function findAllComments(id) {
     // TODO: Handle query params
     const comments = await Comments.findAll({
-      include: [Posts]
-    }) 
+      include: [ Posts, Users ] ,
+      where: {
+        postId: id
+      }
+    })
     return comments
 }
   
@@ -24,28 +27,26 @@ module.exports = {
     findAllComments
 }
 
+/*
 async function task() {
-    console.log(
       await createNewComment(
-        1,
+        4,
         'This is a sample comment',
         'Body of the comment goes here',
-        18
-      )
-    ),
-    console.log(
+        20
+      ),
       await createNewComment(
-        2,
+        10,
         'Another sample comment',
         'Some body example here as well',
-        19
+        20
       )
-    )
-    const comments = await findAllComments()
-    
+
+    const comments = await findAllComments(20) ;
     for (let c of comments) {
-      console.log(c.post) ;
-      console.log(`${c.title}\nauthor: \n${c.body}\nPost-Title: ${c.post.title} \n==========\n`)
+      //console.log(c) ;
+      console.log(` Comment-Title:${c.title}\n Comment-Author:${c.user.username}\n Comment-Body:${c.body}\n Post-Title: ${c.post.title}\n Post-Author:${c.post.userId} \n===============================\n`)
     }
-  }
+}
 task().catch((err)=> console.log(err))
+*/
