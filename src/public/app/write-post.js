@@ -1,6 +1,6 @@
 $("button").click(function(){
     $.post('/api/posts/', {
-        userId: window.currentUser.id ,
+        userId: window.currentUserId ,
         title: $('#title').val(),
         body: $('#body').val()
         }, 

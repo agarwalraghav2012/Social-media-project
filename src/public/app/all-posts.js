@@ -85,7 +85,7 @@ function loadPosts() {
         $("#post").click(function(){
           
           $.post('/api/posts/comments/', {
-              userId: window.currentUser.id ,
+              userId: window.currentUserId ,
               title: $('#title').val(),
               body: $('#body').val(),
               postId: id

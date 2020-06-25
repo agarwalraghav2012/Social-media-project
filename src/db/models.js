@@ -33,9 +33,24 @@ const Posts = db.define('post', {
 })
 
 const Users = db.define('user', {
-    id: COL_ID_DEF,
-    username: COL_USERNAME_DEF
-})
+    id: {
+      type: Sequelize.DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
+    username: {
+      type: Sequelize.DataTypes.STRING(30),
+      unique: true,
+      allowNull: false
+    },
+    email: {
+      type: Sequelize.DataTypes.STRING(100),
+    },
+    password: {
+      type: Sequelize.DataTypes.STRING,
+      allowNull: false
+    }
+  })
 
 const Comments = db.define('comment', {
     id: COL_ID_DEF,

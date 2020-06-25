@@ -5,7 +5,7 @@ $(() => {
   })
   
   function loginIfNeeded() {
-    window.currentUser = window.localStorage.user
+  /*  window.currentUser = window.localStorage.user
       ? JSON.parse(window.localStorage.user)
       : null
     if (!currentUser) {
@@ -20,5 +20,8 @@ $(() => {
     } else {
       console.log('resuming session as ', currentUser.username)
       $('#nav-username').text(currentUser.username)
-    }
+    }*/
+    window.currentUserId = $('#id').text() ;
+    window.currentUsername = $('#name').text() ;
+    $('#nav-username').text($('#name').text()) ;
   }
