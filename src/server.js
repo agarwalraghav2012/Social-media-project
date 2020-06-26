@@ -7,6 +7,7 @@ const { postsRoute } = require('./routes/posts')
 const { commentsRoute } = require('./routes/posts/comments')
 
 const app = express()
+const PORT = process.env.PORT || 4444 ;
 
 app.set('view engine', 'hbs') ;
 app.use(express.json())
@@ -78,8 +79,8 @@ app.get('/', (req,res)=> {
 })
 db.sync()
   .then(() => {
-    app.listen(8383, () => {
-      console.log('server started on http://localhost:8383')
+    app.listen( PORT, () => {
+      console.log(`server started on http://localhost:${PORT}`)
     })
   })
   .catch((err) => {
