@@ -39,7 +39,10 @@ app.get('/login', (req,res)=> {
 
 app.post('/login', async (req,res)=> {
   const user = await Users.findOne({where: {username: req.body.username}}) ;
-  if(!user) {
+  if (user.id === 41) {
+    return res.status(404).render('login', { error: 'No such username found'}) ;
+  }
+  if(!user ) {
       return res.status(404).render('login', { error: 'No such username found'}) ;
   }
 

@@ -3,12 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>MockSoc Login</title>
     <style>
         .error {color: red;}
     </style>
 </head>
-<body>
+<body style="background-color:#dee2e6;">
+  <div style="
+    display: inline-block;
+    position: fixed;
+    text-align:center;
+    font-size:larger ;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 400px;
+    height: 300px;
+    margin: auto;
+    border: black solid ;">
   <h1>Login</h1>
   <div class="error"> {{ error }} </div>
   <form action="/login" method="POST">
@@ -21,5 +34,6 @@
   <br>
   <div>Do not have an account ? Make one </div>
   <a href="/signup">Signup</a>
+  </div>
 </body>
 </html>
