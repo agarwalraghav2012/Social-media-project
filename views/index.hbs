@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 3rd Party Libraries -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <script defer src="/js/jquery-3.4.1.js"></script>
+  <script defer src="/js/popper.js"></script>
+  <script defer src="/js/bootstrap.js"></script>
+
+  <!-- Our App logic and style -->
+  <link rel="stylesheet" href="/app/common.css">
+  <style>
+    #footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: -2;
+    }
+
+    #logout {
+    position: fixed;
+    right: 5px;
+    }
+  </style>
+  <script defer src="/app/common.js"></script>
+  <title>MockSoc</title>
+</head>
+<body>
+  <h3 id="profile" hidden>Profile</h3>
+  <div id="expan" style="display: none">
+  <table cellspacing="10" cellpadding="10" border="1"  >
+    <tr>
+      <th>User ID</th>
+      <td id="id" >{{user.id}}</td>
+    </tr>
+    <tr>
+      <th>UserName</th>
+      <td id="name">{{user.username}}</td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td>{{user.email}}</td>
+    </tr>
+  </table>
+  </div>
+
+  <div id="navbar"></div>
+  <a href="/logout" id="logout">Logout</a>
+  <div id="content"></div>
+  <div id="footer"></div>
+</body>
+</html>

@@ -12,6 +12,11 @@ const PORT = process.env.PORT || 4444 ;
 app.set('view engine', 'hbs') ;
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
+
+app.use('/api/users', usersRoute)
+app.use('/api/posts', postsRoute)
+app.use('/api/posts/comments', commentsRoute)     // changed
+app.use(express.static(__dirname + '/public'))
 ////////
 app.use(session({
   resave: true,
@@ -40,7 +45,8 @@ app.get('/login', (req,res)=> {
 
 app.post('/login', async (req,res)=> {
   const user = await Users.findOne({where: {username: req.body.username}}) ;
-  if (user.username === null || user.username == " " ) {
+  
+  if (user.username == null || user.username == "" ) {
     return res.status(404).render('login', { error: 'No such username found'}) ;
   }
   if(!user ) {
@@ -69,10 +75,6 @@ app.get('/logout', (req, res) => {
   res.redirect('/login') ;
 })
 ////////
-app.use('/api/users', usersRoute)
-app.use('/api/posts', postsRoute)
-app.use('/api/posts/comments', commentsRoute)     // changed
-app.use(express.static(__dirname + '/public'))
 
 app.get('/', (req,res)=> {
   res.redirect('/signup') ;
