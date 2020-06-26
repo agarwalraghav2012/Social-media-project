@@ -1,10 +1,8 @@
 const Sequelize = require('sequelize')
 
 const db = new Sequelize({
-    dialect: 'mysql',
-    database: 'socialmediadb',
-    username: 'socialuser',
-    password: 'mypass',
+    dialect: 'sqlite',
+    storage: __dirname + '/test.db'
 })
 
 const COL_ID_DEF = {
